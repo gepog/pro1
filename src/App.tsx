@@ -42,13 +42,25 @@ function App() {
   const handleSearch = (query: string) => {
     setSearchQuery(query);
     if (query.trim()) {
-      const results = movies.filter(movie =>
+      // Get all movies from regular movies array and content rows
+      const allMovies = [...movies];
+      
+      // Add movies from content rows that aren't already in the regular movies array
+      contentRows.forEach(row => {
+        row.movies.forEach(movie => {
+          if (!allMovies.find(m => m.id === movie.id)) {
+            allMovies.push(movie);
+          }
+        });
+      });
+      
+      const results = allMovies.filter(movie =>
         movie.title.toLowerCase().includes(query.toLowerCase()) ||
         movie.description.toLowerCase().includes(query.toLowerCase()) ||
         movie.genre.some(g => g.toLowerCase().includes(query.toLowerCase()))
       );
       setSearchResults(results);
-      setSearchSuggestions(results);
+      setSearchSuggestions(results.slice(0, 6)); // Limit suggestions to 6 items
     } else {
       setSearchResults([]);
       setSearchSuggestions([]);
