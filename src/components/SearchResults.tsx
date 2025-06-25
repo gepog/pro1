@@ -57,6 +57,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                     {movie.title}
                   </h3>
                   
+                  <div className="mb-2">
                     {movie.genre.join(', ')}
                     <span className="text-white/70 text-xs">{movie.year}</span>
                   </div>
@@ -112,7 +113,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                   {movie.year} • {movie.genre.join(', ')}
                 </p>
               </div>
-              </div>
+            </div>
             );
           })}
         </div>
