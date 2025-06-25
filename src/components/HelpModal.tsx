@@ -79,8 +79,8 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-      <div className="bg-gray-900 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ backgroundColor: 'rgba(8, 25, 50, 0.8)' }}>
+      <div className="rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden" style={{ backgroundColor: '#0f2f5f' }}>
         <div className="flex items-center justify-between p-6 border-b border-gray-700">
           <h2 className="text-white text-2xl font-bold">Help Center</h2>
           <button
@@ -106,27 +106,42 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
 
           {/* Contact Options */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <div className="bg-gray-800 p-4 rounded-lg text-center">
-              <MessageCircle className="mx-auto mb-2 text-red-500" size={32} />
+            <div className="p-4 rounded-lg text-center" style={{ backgroundColor: '#081932' }}>
+              <MessageCircle className="mx-auto mb-2" size={32} style={{ color: '#ddb870' }} />
               <h3 className="text-white font-semibold mb-1">Live Chat</h3>
               <p className="text-white/60 text-sm mb-3">Available 24/7</p>
-              <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors">
+              <button 
+                className="text-white px-4 py-2 rounded-lg transition-colors"
+                style={{ backgroundColor: '#ddb870' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ebdcb5'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ddb870'}
+              >
                 Start Chat
               </button>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg text-center">
-              <Phone className="mx-auto mb-2 text-red-500" size={32} />
+            <div className="p-4 rounded-lg text-center" style={{ backgroundColor: '#081932' }}>
+              <Phone className="mx-auto mb-2" size={32} style={{ color: '#ddb870' }} />
               <h3 className="text-white font-semibold mb-1">Phone</h3>
               <p className="text-white/60 text-sm mb-3">Mon-Fri 9:00-18:00</p>
-              <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors">
+              <button 
+                className="text-white px-4 py-2 rounded-lg transition-colors"
+                style={{ backgroundColor: '#ddb870' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ebdcb5'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ddb870'}
+              >
                 Call Now
               </button>
             </div>
-            <div className="bg-gray-800 p-4 rounded-lg text-center">
-              <Mail className="mx-auto mb-2 text-red-500" size={32} />
+            <div className="p-4 rounded-lg text-center" style={{ backgroundColor: '#081932' }}>
+              <Mail className="mx-auto mb-2" size={32} style={{ color: '#ddb870' }} />
               <h3 className="text-white font-semibold mb-1">Email</h3>
               <p className="text-white/60 text-sm mb-3">Response in 24h</p>
-              <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors">
+              <button 
+                className="text-white px-4 py-2 rounded-lg transition-colors"
+                style={{ backgroundColor: '#ddb870' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ebdcb5'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ddb870'}
+              >
                 Send Email
               </button>
             </div>
@@ -134,7 +149,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
 
           <div className="flex h-96">
             {/* Categories Sidebar */}
-            <div className="w-64 bg-gray-800 rounded-l-lg p-4">
+            <div className="w-64 rounded-l-lg p-4" style={{ backgroundColor: '#081932' }}>
               <h3 className="text-white font-semibold mb-4">Categories</h3>
               <nav className="space-y-2">
                 {categories.map((category) => {
@@ -145,9 +160,20 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
                       onClick={() => setActiveCategory(category.id)}
                       className={`w-full flex items-center space-x-3 p-3 rounded-lg transition-colors text-left ${
                         activeCategory === category.id
-                          ? 'bg-red-600 text-white'
+                          ? 'text-white'
                           : 'text-white/80 hover:bg-gray-700'
                       }`}
+                      style={{ backgroundColor: activeCategory === category.id ? '#ddb870' : 'transparent' }}
+                      onMouseEnter={(e) => {
+                        if (activeCategory !== category.id) {
+                          e.currentTarget.style.backgroundColor = 'rgba(55, 65, 81, 0.5)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (activeCategory !== category.id) {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                        }
+                      }}
                     >
                       <Icon size={20} />
                       <span className="text-sm">{category.label}</span>
@@ -158,7 +184,7 @@ export const HelpModal: React.FC<HelpModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             {/* FAQ Content */}
-            <div className="flex-1 bg-gray-800 rounded-r-lg p-6 overflow-y-auto">
+            <div className="flex-1 rounded-r-lg p-6 overflow-y-auto" style={{ backgroundColor: '#081932' }}>
               <h3 className="text-white text-lg font-semibold mb-4">
                 Frequently Asked Questions - {categories.find(c => c.id === activeCategory)?.label}
               </h3>

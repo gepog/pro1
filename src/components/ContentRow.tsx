@@ -56,7 +56,10 @@ export const ContentRow: React.FC<ContentRowProps> = ({
         {canScrollLeft && (
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/80 hover:bg-black text-white p-2 rounded-r-md opacity-0 group-hover:opacity-100 transition-all duration-300"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-white p-2 rounded-r-md opacity-0 group-hover:opacity-100 transition-all duration-300"
+            style={{ backgroundColor: 'rgba(8, 25, 50, 0.8)' }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#081932'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(8, 25, 50, 0.8)'}
           >
             <ChevronLeft size={24} />
           </button>
@@ -65,7 +68,10 @@ export const ContentRow: React.FC<ContentRowProps> = ({
         {canScrollRight && (
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/80 hover:bg-black text-white p-2 rounded-l-md opacity-0 group-hover:opacity-100 transition-all duration-300"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-white p-2 rounded-l-md opacity-0 group-hover:opacity-100 transition-all duration-300"
+            style={{ backgroundColor: 'rgba(8, 25, 50, 0.8)' }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#081932'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(8, 25, 50, 0.8)'}
           >
             <ChevronRight size={24} />
           </button>
@@ -110,7 +116,7 @@ export const ContentRow: React.FC<ContentRowProps> = ({
                   
                   <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-300 ${
                     isHovered ? 'opacity-100' : 'opacity-0'
-                  }`} />
+                  }`} style={{ background: 'linear-gradient(to top, rgba(8, 25, 50, 0.9), rgba(8, 25, 50, 0.2), transparent)' }} />
                   
                   <div className={`absolute bottom-0 left-0 right-0 p-3 md:p-4 transition-all duration-300 ${
                     isHovered 
@@ -125,7 +131,7 @@ export const ContentRow: React.FC<ContentRowProps> = ({
                       <span className="text-white/80 font-medium">{movie.year}</span>
                       {movie.likes !== undefined && movie.likes > 0 && (
                         <div className="flex items-center space-x-1">
-                          <span className="text-red-500">❤</span>
+                          <span style={{ color: '#ddb870' }}>❤</span>
                           <span className="text-white/80">{movie.likes}</span>
                         </div>
                       )}
@@ -148,11 +154,34 @@ export const ContentRow: React.FC<ContentRowProps> = ({
                         }}
                         className={`p-2 md:p-2.5 rounded-full transition-all duration-200 group/button hover:scale-110 shadow-lg ${
                           isMyListRow 
-                            ? 'bg-red-600/80 text-white hover:bg-red-600' 
+                            ? 'text-white' 
                             : isInMyList
-                              ? 'bg-gray-700/80 text-white hover:bg-red-500'
-                              : 'bg-gray-700/80 text-white hover:bg-green-500'
+                              ? 'bg-gray-700/80 text-white'
+                              : 'bg-gray-700/80 text-white'
                         }`}
+                        style={{
+                          backgroundColor: isMyListRow 
+                            ? 'rgba(221, 184, 112, 0.8)' 
+                            : isInMyList
+                              ? 'rgba(55, 65, 81, 0.8)'
+                              : 'rgba(55, 65, 81, 0.8)'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (isMyListRow) {
+                            e.currentTarget.style.backgroundColor = '#ddb870';
+                          } else if (isInMyList) {
+                            e.currentTarget.style.backgroundColor = 'rgba(221, 184, 112, 0.8)';
+                          } else {
+                            e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 0.8)';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (isMyListRow) {
+                            e.currentTarget.style.backgroundColor = 'rgba(221, 184, 112, 0.8)';
+                          } else {
+                            e.currentTarget.style.backgroundColor = 'rgba(55, 65, 81, 0.8)';
+                          }
+                        }}
                       >
                         {isMyListRow ? (
                           <X size={16} />

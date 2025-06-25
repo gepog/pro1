@@ -21,8 +21,8 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
   ];
 
   return (
-    <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-      <div className="bg-gray-900 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ backgroundColor: 'rgba(8, 25, 50, 0.8)' }}>
+      <div className="rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden" style={{ backgroundColor: '#0f2f5f' }}>
         <div className="flex items-center justify-between p-6 border-b border-gray-700">
           <h2 className="text-white text-2xl font-bold">Settings</h2>
           <button
@@ -35,7 +35,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
 
         <div className="flex h-[600px]">
           {/* Sidebar */}
-          <div className="w-64 bg-gray-800 p-4">
+          <div className="w-64 p-4" style={{ backgroundColor: '#081932' }}>
             <nav className="space-y-2">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
@@ -45,9 +45,20 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     onClick={() => setActiveTab(tab.id)}
                     className={`w-full flex items-center space-x-3 p-3 rounded-lg transition-colors text-left ${
                       activeTab === tab.id
-                        ? 'bg-red-600 text-white'
+                        ? 'text-white'
                         : 'text-white/80 hover:bg-gray-700'
                     }`}
+                    style={{ backgroundColor: activeTab === tab.id ? '#ddb870' : 'transparent' }}
+                    onMouseEnter={(e) => {
+                      if (activeTab !== tab.id) {
+                        e.currentTarget.style.backgroundColor = 'rgba(55, 65, 81, 0.5)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (activeTab !== tab.id) {
+                        e.currentTarget.style.backgroundColor = 'transparent';
+                      }
+                    }}
                   >
                     <Icon size={20} />
                     <span>{tab.label}</span>
@@ -83,7 +94,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                   </div>
                   <div>
                     <label className="block text-white/80 text-sm font-medium mb-2">Password</label>
-                    <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors">
+                    <button 
+                      className="text-white px-4 py-2 rounded-lg transition-colors"
+                      style={{ backgroundColor: '#ddb870' }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ebdcb5'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ddb870'}
+                    >
                       Change Password
                     </button>
                   </div>
@@ -101,14 +117,14 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     { label: 'Reminders', desc: 'Remember where you left off watching' },
                     { label: 'Email marketing', desc: 'Special offers and updates via email' },
                   ].map((item) => (
-                    <div key={item.label} className="flex items-center justify-between p-4 bg-gray-800 rounded-lg">
+                    <div key={item.label} className="flex items-center justify-between p-4 rounded-lg" style={{ backgroundColor: '#081932' }}>
                       <div>
                         <h4 className="text-white font-medium">{item.label}</h4>
                         <p className="text-white/60 text-sm">{item.desc}</p>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer">
                         <input type="checkbox" className="sr-only peer" defaultChecked />
-                        <div className="w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                        <div className="w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all" style={{ '--peer-checked-bg': '#ddb870' }}></div>
                       </label>
                     </div>
                   ))}
@@ -120,7 +136,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
               <div className="space-y-6">
                 <h3 className="text-white text-xl font-semibold">Privacy & Security</h3>
                 <div className="space-y-4">
-                  <div className="p-4 bg-gray-800 rounded-lg">
+                  <div className="p-4 rounded-lg" style={{ backgroundColor: '#081932' }}>
                     <h4 className="text-white font-medium mb-2">Viewing History</h4>
                     <p className="text-white/60 text-sm mb-3">
                       Manage your viewing history and usage data
@@ -129,7 +145,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                       Clear History
                     </button>
                   </div>
-                  <div className="p-4 bg-gray-800 rounded-lg">
+                  <div className="p-4 rounded-lg" style={{ backgroundColor: '#081932' }}>
                     <h4 className="text-white font-medium mb-2">Download your data</h4>
                     <p className="text-white/60 text-sm mb-3">
                       Download a copy of your personal data
@@ -188,9 +204,13 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                           key={theme}
                           className={`p-3 rounded-lg border-2 transition-colors ${
                             theme === 'Dark'
-                              ? 'border-red-600 bg-gray-800'
-                              : 'border-gray-600 bg-gray-800 hover:border-gray-500'
+                              ? 'border-gray-600'
+                              : 'border-gray-600 hover:border-gray-500'
                           }`}
+                          style={{ 
+                            backgroundColor: '#081932',
+                            borderColor: theme === 'Dark' ? '#ddb870' : '#6b7280'
+                          }}
                         >
                           <div className="text-white text-sm font-medium">{theme}</div>
                         </button>
@@ -218,13 +238,14 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                     </select>
                   </div>
                   <div className="flex items-center justify-between p-4 bg-gray-800 rounded-lg">
+                  <div className="flex items-center justify-between p-4 rounded-lg" style={{ backgroundColor: '#081932' }}>
                     <div>
                       <h4 className="text-white font-medium">Autoplay</h4>
                       <p className="text-white/60 text-sm">Automatically start the next episode</p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input type="checkbox" className="sr-only peer" defaultChecked />
-                      <div className="w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600"></div>
+                      <div className="w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all" style={{ '--peer-checked-bg': '#ddb870' }}></div>
                     </label>
                   </div>
                 </div>
@@ -240,7 +261,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
           >
             Cancel
           </button>
-          <button className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
+          <button 
+            className="px-6 py-2 text-white rounded-lg transition-colors"
+            style={{ backgroundColor: '#ddb870' }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ebdcb5'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ddb870'}
+          >
             Save Changes
           </button>
         </div>

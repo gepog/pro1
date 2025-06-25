@@ -20,10 +20,10 @@ export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({
 
   return (
     <div className="fixed inset-0 z-40" onClick={onClose}>
-      <div className="absolute top-16 right-4 md:right-8 bg-black/90 backdrop-blur-md border border-gray-700 rounded-md shadow-xl min-w-48">
+      <div className="absolute top-16 right-4 md:right-8 backdrop-blur-md border border-gray-700 rounded-md shadow-xl min-w-48" style={{ backgroundColor: 'rgba(8, 25, 50, 0.9)' }}>
         <div className="p-2">
           <div className="flex items-center space-x-3 p-3 border-b border-gray-700">
-            <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
+            <div className="w-8 h-8 rounded flex items-center justify-center" style={{ backgroundColor: '#ddb870' }}>
               <User size={16} className="text-white" />
             </div>
             <div>

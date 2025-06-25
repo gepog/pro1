@@ -76,7 +76,7 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
 
   return (
     <div className="fixed inset-0 z-40" onClick={onClose}>
-      <div className="absolute top-16 right-4 md:right-20 bg-black/95 backdrop-blur-md border border-gray-700 rounded-md shadow-xl w-80 max-h-96 overflow-y-auto">
+      <div className="absolute top-16 right-4 md:right-20 backdrop-blur-md border border-gray-700 rounded-md shadow-xl w-80 max-h-96 overflow-y-auto" style={{ backgroundColor: 'rgba(8, 25, 50, 0.95)' }}>
         <div className="p-4 border-b border-gray-700">
           <h3 className="text-white font-semibold text-lg">Notifications</h3>
         </div>
@@ -86,8 +86,11 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
             <div
               key={notification.id}
               className={`p-4 hover:bg-gray-800/50 transition-colors cursor-pointer ${
-                !notification.isRead ? 'bg-gray-800/30' : ''
+                !notification.isRead ? '' : ''
               }`}
+              style={{ backgroundColor: !notification.isRead ? 'rgba(15, 47, 95, 0.3)' : 'transparent' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(15, 47, 95, 0.5)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = !notification.isRead ? 'rgba(15, 47, 95, 0.3)' : 'transparent'}
             >
               <div className="flex space-x-3">
                 {notification.thumbnail && (
@@ -106,7 +109,7 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
                       {notification.title}
                     </h4>
                     {!notification.isRead && (
-                      <div className="w-2 h-2 bg-red-600 rounded-full flex-shrink-0"></div>
+                      <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: '#ddb870' }}></div>
                     )}
                   </div>
                   <p className={`text-xs ${
@@ -122,7 +125,12 @@ export const NotificationDropdown: React.FC<NotificationDropdownProps> = ({
         </div>
         
         <div className="p-4 border-t border-gray-700">
-          <button className="text-red-500 hover:text-red-400 text-sm font-medium transition-colors">
+          <button 
+            className="text-sm font-medium transition-colors"
+            style={{ color: '#ddb870' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#ebdcb5'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#ddb870'}
+          >
             Mark all as read
           </button>
         </div>

@@ -35,8 +35,8 @@ export const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onClose, onCon
   ];
 
   return (
-    <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-      <div className="bg-gray-900 rounded-lg max-w-md w-full">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ backgroundColor: 'rgba(8, 25, 50, 0.8)' }}>
+      <div className="rounded-lg max-w-md w-full" style={{ backgroundColor: '#0f2f5f' }}>
         <div className="flex items-center justify-between p-6 border-b border-gray-700">
           <h2 className="text-white text-xl font-bold">
             {showSwitchAccount ? 'Switch Account' : 'Sign Out'}
@@ -53,8 +53,8 @@ export const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onClose, onCon
           {!showSwitchAccount ? (
             <div className="space-y-6">
               {/* Current User Info */}
-              <div className="flex items-center space-x-4 p-4 bg-gray-800 rounded-lg">
-                <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+              <div className="flex items-center space-x-4 p-4 rounded-lg" style={{ backgroundColor: '#081932' }}>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: '#ddb870' }}>
                   <User size={20} className="text-white" />
                 </div>
                 <div>
@@ -79,7 +79,10 @@ export const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onClose, onCon
 
                   <button
                     onClick={onConfirmLogout}
-                    className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-4 rounded-lg transition-colors"
+                    className="w-full text-white py-3 px-4 rounded-lg transition-colors"
+                    style={{ backgroundColor: '#ddb870' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ebdcb5'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ddb870'}
                   >
                     Sign Out
                   </button>
@@ -106,9 +109,12 @@ export const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onClose, onCon
                         console.log('Switching to:', account.email);
                         onClose();
                       }}
-                      className="w-full flex items-center space-x-3 p-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
+                      className="w-full flex items-center space-x-3 p-3 rounded-lg transition-colors"
+                      style={{ backgroundColor: '#081932' }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(55, 65, 81, 0.7)'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#081932'}
                     >
-                      <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#ddb870' }}>
                         <span className="text-white font-semibold">{account.avatar}</span>
                       </div>
                       <div className="flex-1 text-left">
@@ -148,7 +154,10 @@ export const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onClose, onCon
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-red-600 hover:bg-red-700 text-white py-3 px-4 rounded-lg transition-colors"
+                    className="w-full text-white py-3 px-4 rounded-lg transition-colors"
+                    style={{ backgroundColor: '#ddb870' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ebdcb5'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#ddb870'}
                   >
                     Sign In
                   </button>

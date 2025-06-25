@@ -94,13 +94,16 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-gradient-to-b from-black/80 to-transparent'
-    }`}>
+      isScrolled ? 'backdrop-blur-md' : 'bg-gradient-to-b to-transparent'
+    }`} style={{ backgroundColor: isScrolled ? 'rgba(8, 25, 50, 0.9)' : 'rgba(8, 25, 50, 0.8)' }}>
       <div className="flex items-center justify-between px-4 md:px-8 py-4">
         <div className="flex items-center space-x-8">
           <button
             onClick={handleLogoClick}
-            className="text-red-600 text-2xl font-bold hover:text-red-500 transition-colors"
+            className="text-2xl font-bold transition-colors"
+            style={{ color: '#ddb870' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#ebdcb5'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#ddb870'}
           >
             PROJECT
           </button>
@@ -143,17 +146,23 @@ export const Header: React.FC<HeaderProps> = ({
                     }}
                     onFocus={() => searchQuery && setShowSuggestions(true)}
                     placeholder="Search titles..."
-                    className="bg-black/80 border border-gray-600 rounded px-3 py-1 text-white text-sm w-64 focus:outline-none focus:border-white"
+                    className="border border-gray-600 rounded px-3 py-1 text-white text-sm w-64 focus:outline-none"
+                    style={{ backgroundColor: 'rgba(8, 25, 50, 0.8)', borderColor: '#6b7280' }}
+                    onFocus={(e) => e.currentTarget.style.borderColor = '#ddb870'}
+                    onBlur={(e) => e.currentTarget.style.borderColor = '#6b7280'}
                   />
                 </form>
                 
                 {showSuggestions && searchSuggestions.length > 0 && (
-                  <div className="absolute top-full left-0 right-0 mt-1 bg-black/95 backdrop-blur-md border border-gray-700 rounded-md shadow-xl max-h-80 overflow-y-auto z-50">
+                  <div className="absolute top-full left-0 right-0 mt-1 backdrop-blur-md border border-gray-700 rounded-md shadow-xl max-h-80 overflow-y-auto z-50" style={{ backgroundColor: 'rgba(8, 25, 50, 0.95)' }}>
                     {searchSuggestions.slice(0, 6).map((movie) => (
                       <div
                         key={movie.id}
                         onClick={() => handleSuggestionClick(movie)}
-                        className="flex items-center space-x-3 p-3 hover:bg-gray-800/50 cursor-pointer transition-colors"
+                        className="flex items-center space-x-3 p-3 cursor-pointer transition-colors"
+                        style={{ ':hover': { backgroundColor: 'rgba(15, 47, 95, 0.5)' } }}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(15, 47, 95, 0.5)'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                       >
                         <img
                           src={movie.thumbnail}
@@ -195,7 +204,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={onProfileClick}
             className="flex items-center space-x-2 text-white hover:text-gray-300 transition-colors"
           >
-            <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
+            <div className="w-8 h-8 rounded flex items-center justify-center" style={{ backgroundColor: '#ddb870' }}>
               <User size={16} />
             </div>
             <ChevronDown size={16} />

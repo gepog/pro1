@@ -22,7 +22,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
   if (!query) return null;
 
   return (
-    <div className="min-h-screen bg-black pt-20 px-4 md:px-8">
+    <div className="min-h-screen pt-20 px-4 md:px-8" style={{ backgroundColor: '#081932' }}>
       <h1 className="text-white text-2xl md:text-3xl font-bold mb-8">
         Search results for "{query}"
       </h1>

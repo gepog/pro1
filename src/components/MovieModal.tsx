@@ -29,15 +29,17 @@ export const MovieModal: React.FC<MovieModalProps> = ({
 
   return (
     <div 
-      className="fixed inset-0 bg-black/80 z-40 flex items-center justify-center p-4"
+      className="fixed inset-0 z-40 flex items-center justify-center p-4"
+      style={{ backgroundColor: 'rgba(8, 25, 50, 0.8)' }}
       onClick={onClose}
     >
       <div 
-        className="bg-gray-900 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        className="rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        style={{ backgroundColor: '#0f2f5f' }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative">
-          <div className="relative h-64 md:h-96 bg-black rounded-t-lg overflow-hidden">
+          <div className="relative h-64 md:h-96 rounded-t-lg overflow-hidden" style={{ backgroundColor: '#081932' }}>
             {isTrailerPlaying ? (
               <video
                 autoPlay
@@ -50,7 +52,7 @@ export const MovieModal: React.FC<MovieModalProps> = ({
                 className="w-full h-full bg-cover bg-center"
                 style={{ backgroundImage: `url(${movie.backdrop})` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #0f2f5f, transparent, transparent)' }} />
                 <button
                   onClick={() => setIsTrailerPlaying(true)}
                   className="absolute inset-0 flex items-center justify-center group"
@@ -65,7 +67,8 @@ export const MovieModal: React.FC<MovieModalProps> = ({
 
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors p-2 bg-black/50 rounded-full"
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors p-2 rounded-full"
+            style={{ backgroundColor: 'rgba(8, 25, 50, 0.5)' }}
           >
             <X size={24} />
           </button>
@@ -90,9 +93,20 @@ export const MovieModal: React.FC<MovieModalProps> = ({
                 onClick={() => onAddToList(movie)}
                 className={`flex items-center justify-center space-x-3 bg-gray-600/80 text-white px-6 py-3 rounded-md font-semibold backdrop-blur-sm transition-all duration-200 group/button ${
                   isInMyList 
-                    ? 'hover:bg-red-500/90' 
-                    : 'hover:bg-green-500/90'
+                    ? '' 
+                    : ''
                 }`}
+                style={{ backgroundColor: 'rgba(107, 114, 128, 0.8)' }}
+                onMouseEnter={(e) => {
+                  if (isInMyList) {
+                    e.currentTarget.style.backgroundColor = 'rgba(221, 184, 112, 0.9)';
+                  } else {
+                    e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 0.9)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgba(107, 114, 128, 0.8)';
+                }}
               >
                 {isInMyList ? (
                   <>
@@ -114,7 +128,7 @@ export const MovieModal: React.FC<MovieModalProps> = ({
               <div className="flex items-center space-x-4 text-white/90 mb-4">
                 <span>{movie.year}</span>
                 <div className="flex items-center space-x-1 ml-6">
-                  <Heart size={16} className="text-red-500" fill="currentColor" />
+                  <Heart size={16} fill="currentColor" style={{ color: '#ddb870' }} />
                   <span className="text-sm font-medium">{currentLikes.toLocaleString()}</span>
                 </div>
               </div>
@@ -128,9 +142,12 @@ export const MovieModal: React.FC<MovieModalProps> = ({
                   onClick={() => onLike(movie)}
                   className={`flex items-center space-x-2 transition-colors ${
                     isLiked 
-                      ? 'text-green-500' 
-                      : 'text-white hover:text-green-500'
+                      ? '' 
+                      : 'text-white'
                   }`}
+                  style={{ color: isLiked ? '#22c55e' : 'white' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#22c55e'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = isLiked ? '#22c55e' : 'white'}
                 >
                   <ThumbsUp size={20} />
                   <span className="text-sm">{isLiked ? 'Unlike' : 'Like'}</span>

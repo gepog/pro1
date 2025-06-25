@@ -188,7 +188,7 @@ function App() {
     : updatedContentRows;
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="min-h-screen" style={{ backgroundColor: '#081932' }}>
       <Header
         onSearch={handleSearch}
         onProfileClick={handleProfileClick}
