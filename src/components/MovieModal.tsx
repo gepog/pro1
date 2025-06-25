@@ -91,32 +91,33 @@ export const MovieModal: React.FC<MovieModalProps> = ({
 
               <button
                 onClick={() => onAddToList(movie)}
-                className={`flex items-center justify-center space-x-3 bg-gray-600/80 text-white px-6 py-3 rounded-md font-semibold backdrop-blur-sm transition-all duration-200 group/button ${
-                  isInMyList 
-                    ? '' 
-                    : ''
-                }`}
-                style={{ backgroundColor: 'rgba(107, 114, 128, 0.8)' }}
+                className="flex items-center justify-center space-x-3 text-white px-6 py-3 rounded-md font-semibold backdrop-blur-sm transition-all duration-200 group/button"
+                style={{ 
+                  backgroundColor: isInMyList 
+                    ? 'rgba(239, 68, 68, 0.8)' 
+                    : 'rgba(34, 197, 94, 0.8)'
+                }}
                 onMouseEnter={(e) => {
                   if (isInMyList) {
-                    e.currentTarget.style.backgroundColor = 'rgba(221, 184, 112, 0.9)';
+                    e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 1)';
                   } else {
-                    e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 0.9)';
+                    e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 1)';
                   }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(107, 114, 128, 0.8)';
+                  if (isInMyList) {
+                    e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 0.8)';
+                  } else {
+                    e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 0.8)';
+                  }
                 }}
               >
                 {isInMyList ? (
-                  <>
-                    <Plus size={20} className="group-hover/button:hidden" />
-                    <X size={20} className="hidden group-hover/button:block" />
-                  </>
+                  <X size={20} />
                 ) : (
                   <Plus size={20} />
                 )}
-                <span>My List</span>
+                <span>{isInMyList ? 'Remove from List' : 'Add to My List'}</span>
               </button>
             </div>
           </div>
