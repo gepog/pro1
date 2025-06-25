@@ -105,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({
             <img 
               src="/src/assets/Title(1) (1).png" 
               alt="SKÀ Logo" 
-              className="h-16 w-auto"
+              className="h-10 w-auto"
             />
           </button>
           <nav className="hidden md:flex items-center space-x-6">
