@@ -57,7 +57,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                     {movie.title}
                   </h3>
                   
-                    {movie.genre.join(', ')}
+                  <div className="flex items-center space-x-2 mb-3">
                     <span className="text-white/70 text-xs">{movie.year}</span>
                   </div>
                   
