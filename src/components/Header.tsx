@@ -103,7 +103,7 @@ export const Header: React.FC<HeaderProps> = ({
             className="transition-opacity hover:opacity-80"
           >
             <img 
-              src="/src/assets/Title(1) (1).png" 
+              src="/src/assets/Title.png" 
               alt="SKÀ Logo" 
               className="h-10 w-auto"
             />
