@@ -175,7 +175,7 @@ export const Header: React.FC<HeaderProps> = ({
                             {movie.title}
                           </h4>
                           <p className="text-white/60 text-xs">
-                            {movie.year} • {movie.genre.slice(0, 2).join(', ')}
+                            {movie.genre.slice(0, 2).join(', ')}
                           </p>
                         </div>
                       </div>
