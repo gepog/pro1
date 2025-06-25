@@ -78,15 +78,31 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                      }}
                       className={`p-2 rounded-full transition-all duration-200 group/button ${
                         isInMyList
-                          ? 'bg-gray-700/80 text-white hover:bg-red-500'
-                          : 'bg-gray-700/80 text-white hover:bg-green-500'
+                          ? 'text-white'
+                          : 'text-white'
                       }`}
+                      style={{
+                        backgroundColor: isInMyList 
+                          ? 'rgba(239, 68, 68, 0.8)' 
+                          : 'rgba(34, 197, 94, 0.8)'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (isInMyList) {
+                          e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 1)';
+                        } else {
+                          e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 1)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (isInMyList) {
+                          e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 0.8)';
+                        } else {
+                          e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 0.8)';
+                        }
+                      }}
                     >
                       {isInMyList ? (
-                        <>
-                          <Plus size={16} className="group-hover/button:hidden" />
-                          <X size={16} className="hidden group-hover/button:block" />
-                        </>
+                        <X size={16} />
                       ) : (
                         <Plus size={16} />
                       )}

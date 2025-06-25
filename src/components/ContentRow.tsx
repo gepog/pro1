@@ -162,33 +162,32 @@ export const ContentRow: React.FC<ContentRowProps> = ({
                           backgroundColor: isMyListRow 
                             ? 'rgba(221, 184, 112, 0.8)' 
                             : isInMyList
-                              ? 'rgba(55, 65, 81, 0.8)'
-                              : 'rgba(55, 65, 81, 0.8)'
+                              ? 'rgba(239, 68, 68, 0.8)'
+                              : 'rgba(34, 197, 94, 0.8)'
                         }}
                         onMouseEnter={(e) => {
                           if (isMyListRow) {
                             e.currentTarget.style.backgroundColor = '#ddb870';
                           } else if (isInMyList) {
-                            e.currentTarget.style.backgroundColor = 'rgba(221, 184, 112, 0.8)';
+                            e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 1)';
                           } else {
-                            e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 0.8)';
+                            e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 1)';
                           }
                         }}
                         onMouseLeave={(e) => {
                           if (isMyListRow) {
                             e.currentTarget.style.backgroundColor = 'rgba(221, 184, 112, 0.8)';
+                          } else if (isInMyList) {
+                            e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 0.8)';
                           } else {
-                            e.currentTarget.style.backgroundColor = 'rgba(55, 65, 81, 0.8)';
+                            e.currentTarget.style.backgroundColor = 'rgba(34, 197, 94, 0.8)';
                           }
                         }}
                       >
                         {isMyListRow ? (
                           <X size={16} />
                         ) : isInMyList ? (
-                          <>
-                            <Plus size={16} className="group-hover/button:hidden" />
-                            <X size={16} className="hidden group-hover/button:block" />
-                          </>
+                          <X size={16} />
                         ) : (
                           <Plus size={16} />
                         )}
