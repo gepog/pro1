@@ -100,12 +100,13 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center space-x-8">
           <button
             onClick={handleLogoClick}
-            className="text-2xl font-bold transition-colors"
-            style={{ color: '#ddb870' }}
-            onMouseEnter={(e) => e.currentTarget.style.color = '#ebdcb5'}
-            onMouseLeave={(e) => e.currentTarget.style.color = '#ddb870'}
+            className="transition-opacity hover:opacity-80"
           >
-            PROJECT
+            <img 
+              src="/src/assets/Title(1) (1).png" 
+              alt="SKÀ Logo" 
+              className="h-10 w-auto"
+            />
           </button>
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
