@@ -167,7 +167,7 @@ export const ContentRow: React.FC<ContentRowProps> = ({
                         }}
                         onMouseEnter={(e) => {
                           if (isMyListRow) {
-                            e.currentTarget.style.backgroundColor = '#ddb870';
+                            e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 1)';
                           } else if (isInMyList) {
                             e.currentTarget.style.backgroundColor = 'rgba(239, 68, 68, 1)';
                           } else {
