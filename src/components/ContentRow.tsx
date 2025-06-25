@@ -153,14 +153,14 @@ export const ContentRow: React.FC<ContentRowProps> = ({
                         }}
                         className={`p-2 md:p-2.5 rounded-full transition-all duration-200 group/button hover:scale-110 shadow-lg ${
                           isMyListRow 
-                            ? 'text-white' 
+                            ? 'text-white'
                             : isInMyList
                               ? 'bg-gray-700/80 text-white'
                               : 'bg-gray-700/80 text-white'
                         }`}
                         style={{
                           backgroundColor: isMyListRow 
-                            ? 'rgba(221, 184, 112, 0.8)' 
+                            ? 'rgba(239, 68, 68, 0.8)' 
                             : isInMyList
                               ? 'rgba(239, 68, 68, 0.8)'
                               : 'rgba(34, 197, 94, 0.8)'
