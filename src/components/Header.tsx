@@ -80,6 +80,30 @@ export const Header: React.FC<HeaderProps> = ({
     }
   };
 
+  const handlePracticalInfoClick = () => {
+    const practicalInfoElement = document.querySelector('[data-section="practical-info"]');
+    if (practicalInfoElement) {
+      // Get the title element within the section
+      const titleElement = practicalInfoElement.querySelector('h2');
+      if (titleElement) {
+        // Calculate offset to account for fixed header
+        const headerHeight = 80; // Approximate header height
+        const elementTop = titleElement.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementTop - headerHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      } else {
+        // Fallback to section scroll if title not found
+        practicalInfoElement.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  };
   const handleHomeClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setSearchQuery('');
@@ -90,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({
     window.location.reload();
   };
 
-  const navItems = ['Home', 'Popular', 'My List'];
+  const navItems = ['Home', 'Popular', 'My List', 'Practical Information'];
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -175,7 +199,7 @@ export const Header: React.FC<HeaderProps> = ({
                             {movie.title}
                           </h4>
                           <p className="text-white/60 text-xs">
-                            {movie.year} • {movie.genre.slice(0, 2).join(', ')}
+                            {movie.genre.slice(0, 2).join(', ')}
                           </p>
                         </div>
                       </div>
