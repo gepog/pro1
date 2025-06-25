@@ -128,6 +128,7 @@ export const ContentRow: React.FC<ContentRowProps> = ({
                     </h3>
                     
                     <div className="flex items-center space-x-2 mb-3 text-xs md:text-sm">
+                      <span className="text-white/80 font-medium">{movie.year}</span>
                       {movie.likes !== undefined && movie.likes > 0 && (
                         <div className="flex items-center space-x-1">
                           <span style={{ color: '#ddb870' }}>❤</span>
@@ -203,11 +204,6 @@ export const ContentRow: React.FC<ContentRowProps> = ({
                     </div>
                   </div>
                 </div>
-                
-                {/* Gold border overlay on hover */}
-                <div className={`absolute inset-0 border-2 rounded-md transition-all duration-300 pointer-events-none ${
-                  isHovered ? 'border-opacity-100' : 'border-opacity-0'
-                }`} style={{ borderColor: '#ddb870' }} />
               </div>
             );
           })}
