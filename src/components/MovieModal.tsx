@@ -126,8 +126,7 @@ export const MovieModal: React.FC<MovieModalProps> = ({
           <div className="max-w-4xl">
             <div>
               <div className="flex items-center space-x-4 text-white/90 mb-4">
-                <span>{movie.year}</span>
-                <div className="flex items-center space-x-1 ml-6">
+                <div className="flex items-center space-x-1">
                   <Heart size={16} fill="currentColor" style={{ color: '#ddb870' }} />
                   <span className="text-sm font-medium">{currentLikes.toLocaleString()}</span>
                 </div>

@@ -57,10 +57,6 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                     {movie.title}
                   </h3>
                   
-                  <div className="flex items-center space-x-2 mb-3">
-                    <span className="text-white/70 text-xs">{movie.year}</span>
-                  </div>
-                  
                   <div className="flex space-x-2">
                     <button
                      onClick={(e) => {
@@ -109,7 +105,7 @@ export const SearchResults: React.FC<SearchResultsProps> = ({
                   {movie.title}
                 </h3>
                 <p className="text-white/60 text-xs mt-1">
-                  {movie.year} • {movie.genre.join(', ')}
+                  {movie.genre.join(', ')}
                 </p>
               </div>
               </div>
