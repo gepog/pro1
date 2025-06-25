@@ -21,8 +21,8 @@ export const Hero: React.FC<HeroProps> = ({ movie, onPlay, onAddToList, onMoreIn
       </div>
 
       <div className="relative z-10 px-4 md:px-8 max-w-2xl">
-        <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
-          TITLE
+        <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg" style={{ fontFamily: 'Alegreya Sans, sans-serif' }}>
+          SKÀ
         </h1>
       </div>
     </div>
